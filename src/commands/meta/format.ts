@@ -11,7 +11,7 @@ export const formatMeta = (m: Meta): string => `
   site: ${formatSite(m.url)}
   num_links: ${m.links}
   images: ${m.images}
-  last_fetch: ${Math.round(m.lastFetch.getTime() / 1000)}
+  last_fetch: ${m.lastFetch.toISOString()}
 `;
 
 export const formatMetas = (ms: Meta[]) => ms.map(formatMeta).join('\n');
