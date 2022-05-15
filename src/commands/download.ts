@@ -12,4 +12,4 @@ export const runDownload = async (url: URL) => {
   substituteStatics(url, page, statics);
   await saveFiles(url, page, statics);
   return saveMeta(getPageMeta(url, page));
-}
+};

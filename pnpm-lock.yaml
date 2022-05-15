@@ -13,6 +13,7 @@ specifiers:
   fp-ts: ^2.12.1
   node-fetch: 2.6.5
   node-html-parser: ^5.3.3
+  prettier: ^2.6.2
   prisma: ^3.14.0
   ts-node: ^10.7.0
   tslib: ^2.4.0
@@ -35,6 +36,7 @@ devDependencies:
   eslint: 8.15.0
   eslint-config-airbnb-base: 15.0.0_gwd37gqv3vjv3xlpl7ju3ag2qu
   eslint-plugin-import: 2.26.0_doddzorl55y6dbr5ij3nshfl64
+  prettier: 2.6.2
   ts-node: 10.7.0_2e3zkt3gzqz6r43dj4x46rot3i
   tslib: 2.4.0
 
@@ -1356,6 +1358,12 @@ packages:
   /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
+    dev: true
+
+  /prettier/2.6.2:
+    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
     dev: true
 
   /prisma/3.14.0:
