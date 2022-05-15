@@ -1,15 +1,14 @@
 import { runDownload } from './download';
+import { runGetMeta } from './meta';
+import { formatMetas } from './meta/format';
 
 export type Command = "meta" | "download";
 
 const commandHandlers: {[k in Command]: (urls: URL[]) => Promise<String>} = {
-  meta: async (urls: URL[]) => {
-    // const meta = await Promise.all(urls.map(url => getMeta(url)));
-    return JSON.stringify("TODO");
-  },
+  meta: runGetMeta,
   download: async (urls: URL[]) => {
-    const metas = Promise.all(urls.map(runDownload));
-    return JSON.stringify(metas);
+    const metas = await Promise.all(urls.map(runDownload));
+    return formatMetas(metas);
   },
 };
 

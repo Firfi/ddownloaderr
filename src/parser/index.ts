@@ -1,13 +1,18 @@
 import { parse as parseDOM } from 'node-html-parser';
 import type { Statics } from '../download/statics';
 import { staticsFilePath } from '../file/name';
+import { Meta, MetaUpdate, MetaUpdateCounts } from '../types/meta';
 
 export interface WithBodySlice {
   sliceBody(): string; // at the moment of the call
 }
 
+export type WithCounts = {
+  [k in keyof MetaUpdateCounts as `get${Capitalize<k>}Count`]: () => MetaUpdateCounts[k];
+}
+
 // lens into our page with only important methods
-export interface PageLens extends WithBodySlice {
+export interface PageLens extends WithBodySlice, WithCounts {
   peekSrcs: () => {src: string, set: (string) => void}[];
 }
 
@@ -16,6 +21,14 @@ export const parse = (s: string): PageLens => {
     parseNoneClosedTags: false,
   });
   return {
+    getLinksCount: () => {
+      const links = root.querySelectorAll('a');
+      return links.length;
+    },
+    getImagesCount: () => {
+      const links = root.querySelectorAll('img');
+      return links.length;
+    },
     peekSrcs: () => root.querySelectorAll('*').map(e => {
       // todo proper heuristics for attribute
       const src = e.getAttribute('src');
@@ -40,3 +53,9 @@ export const substituteStatics = (root: URL, p: PageLens, statics: Statics) => {
     }
   });
 }
+
+export const getMeta = (root: URL, p: PageLens): MetaUpdate => ({
+  links: p.getLinksCount(),
+  images: p.getImagesCount(),
+  url: root.href,
+})

@@ -1,6 +1,7 @@
 import { download } from './index';
 import { PageLens } from '../parser';
 import { tryStaticSrc } from '../srcs';
+import { args } from '../index';
 
 const downloadStatics = async (url: URL): Promise<null | ArrayBuffer> =>
   (await download(url, false))?.arrayBuffer() || null;
@@ -16,7 +17,7 @@ export const fetchStatics = async (root: URL, page: PageLens): Promise<Statics> 
   return new Map((await Promise.all([...srcToMapped.entries()].map(async ([src, mapped]) => {
     const buffer = await downloadStatics(mapped);
     if (!buffer) {
-      console.log(`Failed to download statics ${mapped.href}`);
+      if (args.debug) console.debug(`Failed to download statics ${mapped.href}`);
       return null;
     }
     return [src, { mapped, buffer }] as const;
