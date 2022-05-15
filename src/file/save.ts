@@ -20,7 +20,7 @@ export const saveFiles = async (root: URL, page: WithBodySlice, statics: Statics
   const bodyFileName = rootPrefix + ".html";
   await mkdir(FILES_PREFIX);
   await mkdir(`${FILES_PREFIX}/${staticsDirName(root)}`);
-  const staticsFilesPromises = [...statics.entries()].map(([_, { mapped, buffer }]) =>
+  const staticsFilesPromises = [...statics.entries()].map(([, { mapped, buffer }]) =>
     fsp.writeFile(`${FILES_PREFIX}/${staticsFilePath(root, mapped)}`, Buffer.from(buffer)));
   await Promise.all(staticsFilesPromises).then(/*void*/);
   // write after callbacks had a chance to

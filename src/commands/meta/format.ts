@@ -2,7 +2,7 @@ import { Meta } from '../../types/meta';
 
 const formatSite = (s: string) => {
   const url = new URL(s); // valid
-  return url.href.substring(url.protocol.length + "//".length).replace(/\/$/, '');;
+  return url.href.substring(url.protocol.length + "//".length).replace(/\/$/, '');
 }
 
 export const formatMeta = (m: Meta): string => `

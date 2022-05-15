@@ -1,4 +1,4 @@
-import { PageLens, WithCounts } from '../parser';
+import { WithCounts } from '../parser';
 import { MetaUpdate } from '../types/meta';
 
 export const getPageMeta = (root: URL, p: WithCounts): MetaUpdate => ({

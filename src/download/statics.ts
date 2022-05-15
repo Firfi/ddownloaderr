@@ -13,7 +13,7 @@ export type Statics = Map<string, {
 
 export const fetchStatics = async (root: URL, page: PageLens): Promise<Statics> => {
   // dedupe and filter not acceptable urls
-  const srcToMapped = new Map(page.peekSrcs().map(({src}) => [src, tryStaticSrc(root, src)] as const).filter(([_, url]) => !!url));
+  const srcToMapped = new Map(page.peekSrcs().map(({src}) => [src, tryStaticSrc(root, src)] as const).filter(([, url]) => !!url));
   return new Map((await Promise.all([...srcToMapped.entries()].map(async ([src, mapped]) => {
     const buffer = await downloadStatics(mapped);
     if (!buffer) {

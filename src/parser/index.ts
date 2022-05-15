@@ -1,7 +1,7 @@
 import { parse as parseDOM } from 'node-html-parser';
 import type { Statics } from '../download/statics';
 import { staticsFilePath } from '../file/name';
-import { Meta, MetaUpdate, MetaUpdateCounts } from '../types/meta';
+import { MetaUpdate, MetaUpdateCounts } from '../types/meta';
 
 export interface WithBodySlice {
   sliceBody(): string; // at the moment of the call

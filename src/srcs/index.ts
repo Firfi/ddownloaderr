@@ -9,7 +9,9 @@ export const tryStaticSrc = (root: URL, src: string): URL | null => {
     // try relative
     try {
       httpUrl = new URL(src, root.href);
-    } catch (e) {}
+    } catch (e) {
+      return null;
+    }
   }
   return httpUrl;
 };
