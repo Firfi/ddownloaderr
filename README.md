@@ -1,10 +1,20 @@
-# What is that
+
+
+# What is this
 
 A typescript console app for downloading web urls into file system. 
 
 Together with the page, it takes all its static resources, downloads them and sets their urls on the page properly to point to the file system.
 
 It features Docker build, Prisma ORM, console app arguments parse, work with filesystem and async networking / parallel fetch, as well as dom parsing/modifying.
+
+# Command line options
+
+`ts-node ./src/index.ts http://www.loskutoff.com https://google.com` - will fetch http://www.loskutoff.com and https://google.com
+
+--meta - shows meta for downloaded pages
+
+`ts-node ./src/index.ts --meta http://www.loskutoff.com https://google.com` 
 
 # Dockerfile
 
