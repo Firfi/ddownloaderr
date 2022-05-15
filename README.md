@@ -1,4 +1,12 @@
-#Dockerfile
+# What is that
+
+A typescript console app for downloading web urls into file system. 
+
+Together with the page, it takes all its static resources, downloads them and sets their urls on the page properly to point to the file system.
+
+It features Docker build, Prisma ORM, console app arguments parse, work with filesystem and async networking / parallel fetch, as well as dom parsing/modifying.
+
+# Dockerfile
 
 To run with Docker,
 - Build the image — no extra steps or args needed
@@ -7,7 +15,7 @@ To run with Docker,
 - i.e. ` docker run -it -v ~/work/clients/autify/ddownloaderr/downloads:/downloads <container id> http://www.loskutoff.com http://google.com`
 - or for metadata, i.e. ` docker run -it -v ~/work/clients/autify/ddownloaderr/downloads:/downloads <container id> --meta http://www.loskutoff.com`
 
-#Development
+# Development
 
 db - prisma + sqlite
 
